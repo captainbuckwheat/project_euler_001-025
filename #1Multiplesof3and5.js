@@ -20,6 +20,6 @@ var test = function(){
 	if (sum_of_multiples_3and5(10)!==23){
 		console.log("failed test");
 	}else{
-		console.log("works like a fkn clock!");
+		console.log("it works like a fkn clock!");
 	}
 };
