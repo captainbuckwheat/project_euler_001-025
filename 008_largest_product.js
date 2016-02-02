@@ -24,14 +24,13 @@ var x = '73167176531330624919225119674426574742355349194934
 71636269561882670428252483600823257530420752963450';
 
 var largest_product = function(x, b){
-	var largest_product, product, i, a, q; 
-	q = 0; 
+	var largest_product, product, i, a; 
 	largest_product = 0; 
-	for (i = 0; i < x.length - b + 1; i++){
+	for (i = 0; i < x.length - b + 1; i++) {
 		product = x[i];
-		for (a = i + 1; a < i + b; a++){
+		for (a = i + 1; a < i + b; a++) {
 			product = product * x[a]; 
-			if (product > largest_product){
+			if (product > largest_product) {
 				largest_product = product;
 			}
 		}
@@ -39,10 +38,14 @@ var largest_product = function(x, b){
 	return largest_product; 
 }
 var test = function(){
-	if (largest_product(x, 4)!==5832){
+	if (largest_product(x, 4)!== 5832) {
 		console.log('test #1 has failed');
-	} else if (largest_product(x, 13)!==23514624000){
+	} else if (largest_product(x, 13)!== 23514624000) {
 		console.log('test #2 has failed');
+	} else if (largest_product('',0)!== 0) {
+		console.log('test #3 has failed');
+	} else if (largest_product('1121',2)!== 2) {
+		console.log('test #4 has failed');		
 	} else {
 		console.log ('it works like a fkn clock!');
 	}
