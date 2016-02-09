@@ -57,6 +57,7 @@ var grid = function (x, size) {
 	}
 	return grid; 
 }
+
 var horizontal_product = function(x, size, num) {
 	var g, i, a, largest_product, product; 
 	g = grid(x, size);
@@ -75,7 +76,6 @@ var horizontal_product = function(x, size, num) {
 	}
 	return largest_product; 
 }
-
 
 var vertical_product = function(x, size, num){
 	var g, i, a, largest_product, product; 
@@ -96,7 +96,6 @@ var vertical_product = function(x, size, num){
 	return largest_product; 
 }
 
-	
 var diag1_product = function(x, size, num){
 	var n, g, i, a, largest_product, product; 
 	g = grid(x, size);
