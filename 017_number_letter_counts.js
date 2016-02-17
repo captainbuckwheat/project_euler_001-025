@@ -63,19 +63,18 @@ var tens_and_ones = function (x){
 }; 
 
 var hundreds = function(x){
-	var string, add, and, p; 
+	var string, add, and; 
 	string = JSON.stringify(x); 
 	add = 7;
 	and = 3; 
-	p = x - Number(string[0])*100; 
 	if (string[1]==="0" && string[2]==="0"){
 		add = ones(string[0]) + add; // 100 = one + hundred 
 	} else if (string[1] === "0"){
 		add = ones(string[0])+ add + and + ones(string[2]); // 101 = one + hundred + and + one
 	} else if (string[2] === "0" || string[1] === "1"){
-		add = ones(string[0])+ add + and + tens(p);// 120 = one + hundred + and + twenty
+		add = ones(string[0])+ add + and + tens(x%100); // 120 = one + hundred + and + twenty
 	} else {
-		add = ones(string[0])+ add + and + tens_and_ones(p);
+		add = ones(string[0])+ add + and + tens_and_ones(x%100); // 122 = one + hundred + and + twenty + two
 	}
 	return add;
 }
