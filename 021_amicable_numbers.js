@@ -14,18 +14,18 @@ var factors = function(x){
 	for (i=1; i<=x/2; i++) {
 		if (x%i === 0){
 			factors[a] = i;
-			a = a + 1;
+			a++;
 		}
 	}
 	return factors;
 }; 
 
 factor_sum = function(a){
-	var sum, len, i;
+	var sum, i, f;
 	sum = 0; 
-	len = factors(a).length; 
-	for (i=0; i<len; i++) {
-		sum = sum + factors(a)[i];
+	f = factors(a); 
+	for (i=0; i<f.length; i++) {
+		sum += f[i];
 	}
 	return sum; 
 }
@@ -39,8 +39,8 @@ amicable_sum = function(x){
 	var sum, i; 
 	sum = 0; 
 	for (i = 1; i<x; i++) {
-		if (is_amicable(i) === true) {
-			sum = sum + i; 
+		if (is_amicable(i)) {
+			sum += i; 
 		} 
 	}
 	return sum; 
