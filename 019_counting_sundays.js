@@ -30,14 +30,14 @@ var the_calendar = function() {
 		}
 	}
 	for (i = 0; i < 101; i++) { //calendar[y][d] = z where y is a year-1900 (0-100), d is the day from 0-366 and z is day of the month (1-31)
-		d = 0;
-		day = 0;
-		if (leap_year(i+1900) === true) x = leap_days; 
-		else { x = non_leap_days; }	
-		for (l = 0; l < x.length; l++) { //12months
-			for (j = 0; j < x[d]; j++) calendar[i][j+day] = j+1; 
-			day+=x[d]; //day is a start day
-			d++; //number of day of the month
+		d = 0;  // month
+		day = 0; // day of year (0-366) and start day
+		if (leap_year(i+1900) ) num_days_in_moth = leap_days; 
+		else { num_days_in_moth = non_leap_days; }	
+		for (l = 0; l < num_days_in_moth.length; l++) { //12months
+			for (j = 0; j < num_days_in_moth[d]; j++) calendar[i][j+day] = j+1; 
+			day+=num_days_in_moth[d]; 
+			d++;
 		}
 	}
 	for (i = 0; i < 101; i++) {
