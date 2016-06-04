@@ -14,7 +14,7 @@ How many Sundays fell on the first of the month during the twentieth century (1 
 */
 
 var the_calendar = function() {
-	var calendar, i, j, d, day, num_days, num_sundays, leap_days, non_leap_days; 
+	var calendar, i, j, d, x, day, num_days, num_sundays, leap_days, non_leap_days; 
 	calendar = []; 
 	num_sundays = 0;
 	num_days = 0;
