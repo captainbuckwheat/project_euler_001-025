@@ -14,20 +14,18 @@ How many Sundays fell on the first of the month during the twentieth century (1 
 */
 
 var the_calendar = function() {
-	var calendar, i, j, d, l, day, num_days, num_days_in_month, month, num_sundays, leap_days, non_leap_days; 
+	var calendar, i, j, d, l, day, num_days, num_days_in_year, num_days_in_month, month, num_sundays, leap_days, non_leap_days, year; 
 	calendar = []; 
 	num_sundays = 0;
 	num_days = 0;
 	leap_days = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; 
 	non_leap_days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; 
 	for (i = 0; i < 101; i++) calendar[i] = [];
-	for (i = 1900; i < 2001; i++) {
-		calendar[i-1900] = [];
-		if (leap_year(i) === true) {
-			for (j = 0; j < 366; j++) calendar[i-1900][j] = 0;
-		} else { 
-			for (j = 0; j < 365; j++) calendar[i-1900][j] = 0;
-		}
+	for (year = 1900; year < 2001; year++) {
+		calendar[year-1900] = [];
+		num_days_in_year = 365;
+		if (leap_year(year)) num_days_in_year = 366;
+		for (day = 0; day < num_days_in_year; day++) calendar[year-1900][day] = 0;
 	}
 	for (i = 0; i < 101; i++) { //calendar[y][d] = z where y is a year-1900 (0-100), d is the day from 0-366 and z is day of the month (1-31)
 		month = 0;  // month
