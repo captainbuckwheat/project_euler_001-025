@@ -1,6 +1,6 @@
 //Work out the first ten digits of the sum of the following one-hundred 50-digit numbers.
 
-<div>37107287533902102798797998220837590246510135740250
+var x = `37107287533902102798797998220837590246510135740250
 46376937677490009712648124896970078050417018260538
 74324986199524741059474233309513058123726617309629
 91942213363574161572522430563301811072406154908250
@@ -99,10 +99,8 @@
 77158542502016545090413245809786882778948721859617
 72107838435069186155435662884062257473692284509516
 20849603980134001723930671666823555245252804609722
-53503534226472524250874054075591789781264330331690</div>
+53503534226472524250874054075591789781264330331690`
 
-<script>
-var x = document.getElementsByTagName('div')[0].innerText;
 
 var split = function(s, t){
 	var i, k, p;
@@ -121,64 +119,45 @@ var split = function(s, t){
 };
 
 var add = function(a,b){
-	var carry, add, sum; 
+	var carry, add, sum, z, x, zeroes, i; 
 	carry = ""; 
 	sum = "";
 	x = 1; 
 	if (a.length > b.length){
 		zeroes = a.length - b.length; 
-		for (z = 0; z < zeroes; z++){
-			b = "0" + b;
-		}
+		for (z = 0; z < zeroes; z++) b = "0" + b;
 	} else {
 		zeroes = b.length - a.length; 
-		for (z = 0; z < zeroes; z++){
-			a = "0"+ a;
-		}
+		for (z = 0; z < zeroes; z++) a = "0"+ a;
 	}
-	for (i = 0; i<a.length; i++){
+	for (i = 0; i < a.length; i++) {
 		add = JSON.stringify(Number(a[a.length-x]) + Number(b[b.length-x]) + Number(carry));
 		carry = "0"; 
-		if (add.length > 1){
-			carry = add[0];
-		} else {
-			carry = '0';
-		}
+		if (add.length > 1) carry = add[0];
+		else carry = '0';
 		sum = add[add.length-1] + sum;
 		x = x + 1;  
 	}
-	if (carry !== '0'){
-			sum = carry + sum; 
-	}
+	if (carry !== '0') sum = carry + sum; 
 	return sum; 
 }
 
-var add_all = function(z, n){
-	var add_all, len, i, first_n_dig, p;  
+var add_all = function(x, n) {
+	var add_all, len, i, first_n_dig, p, z;  
 	z = split(x," ");
 	len = z.length; 
 	add_all = z[0];
-	for (i = 1; i < len; i++){
-		add_all = add(add_all, z[i])
-	}
+	for (i = 1; i < len; i++) add_all = add(add_all, z[i]); 
 	first_n_dig = add_all[0]; 
-	for (p = 1; p < n; p++){
-		first_n_dig = first_n_dig + add_all[p]; 
-	}
+	for (p = 1; p < n; p++) first_n_dig = first_n_dig + add_all[p]; 
 	return first_n_dig; 
 }
 
-var test = function(){
-	if (add("8","13")!=="21"){
-		console.log('test #1 has failed');
-	} else if (add("999", "999")!=="1998"){
-		console.log('test #2 has failed');
-	} else if (add("123412341234123412341234", "123412341234123412341234") !== "246824682468246824682468"){
-		console.log('test #3 has failed'); 
-	} else if (add_all("123412341234123412341234 123412341234123412341234 33", 6)!== "246824"){
-		console.log('test #4 has failed'); 
-	} else {
-		console.log ('it works like a fkn clock!');
-	}
+var test = function() {
+	if (add("8","13")!=="21") console.log('test #1 has failed');
+	else if (add("999", "999")!=="1998") console.log('test #2 has failed');
+	else if (add("123412341234123412341234", "123412341234123412341234") !== "246824682468246824682468") console.log('test #3 has failed'); 
+	else if (add_all("123412341234123412341234 123412341234123412341234 33", 6)!== "246824") console.log('test #4 has failed'); 
+	else console.log ('it works like a fkn clock!');
 }
-</script>
+
